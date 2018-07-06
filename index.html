@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bothub Discount</title>
+  <style>
+    body {
+      min-height: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="bothub-discount"></div>
+  </div>
+  <script>
+    window.BOTHUB = {
+      facebook_page_id: "1844967669048324",
+      messenger_app_id: "985673201550272",
+      debug: true,
+      discount_plugin: {
+        "title": "Get 5% off from your order",
+        "sub_title": "Reveal discount by subscribing to our Messenger list:",
+        "discount_text": "Your discount code:",
+        "discount_code": "GET15",
+        "coupon_button_text": "Get Your Discount",
+        "copy_button_text": "Copy the code",
+        "notice": "5%"
+      }
+    };
+
+    (function(s,id,l){s.id=id;s.src=l;window[id]||document.body.appendChild(s)})
+    (document.createElement('script'),'bothub-discount-plugin','https://sdk.bothub.ai/plugins/discount-v0.1.js');
+
+    window.addEventListener('message', function(event) {
+      switch(event.data) {
+        case 'bothub-discount-get-coupon':
+          console.log('bothub-discount-get-coupon')
+          break
+        case 'bothub-discount-coupon-copied':
+          console.log('bothub-discount-coupon-copied')
+          break
+      }
+    })
+  </script>
+  <!-- <script src="dist/discount.js"></script> -->
+</body>
+</html>
