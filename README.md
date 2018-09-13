@@ -1,6 +1,6 @@
 # 关于 Discount Plugin
 
-对于电商用户来说，用 Checkbox 实现 Messenger 购物车召回是一个常规需求。这时，如果店铺页面的 checkbox 默认不能勾选，如果使用“优惠券插件”能实现更好的效果。本插件提供了标准的“优惠券插件”集成，以提高新商家接购物车召回的效率。
+对于电商用户来说，用 Checkbox 实现 Messenger 购物车召回是一个常规需求。这时，如果店铺页面的 checkbox 默认不能勾选，如果使用“优惠券插件”能实现更好的效果。使用本插件可提高新商家接购物车召回的效率。
 
 ## 样例展示
 
@@ -35,12 +35,12 @@ window.BOTHUB = {
 window.addEventListener('message', function(event) {
   switch(event.data) {
     // 用户点击获取优惠码按钮
-    case 'bothub-discount-get-coupon':
-      console.log('bothub-discount-get-coupon')
+    case 'bothub_discount_get_coupon':
+      console.log('bothub_discount_get_coupon')
       break
     // 用户点击复制优惠码按钮
-    case 'bothub-discount-coupon-copied':
-      console.log('bothub-discount-coupon-copied')
+    case 'bothub_discount_coupon_copied':
+      console.log('bothub_discount_coupon_copied')
       break
   }
 })

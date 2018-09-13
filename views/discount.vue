@@ -47,8 +47,7 @@ export default {
     getCoupon() {
       if (this.checked) {
         this.showCoupon = true
-        window.postMessage('bothub-discount-get-coupon','*');
-        BOTHUB.Marketing.logEvent('bothub-discount-get-coupon')
+        window.postMessage('bothub_discount_get_coupon','*')
       } else {
         this.shake = true
         setTimeout(() => this.shake = false, 1000)
@@ -61,7 +60,7 @@ export default {
       document.execCommand('copy')
       document.body.removeChild(input)
       this.widget.copy_button_text = 'Copied!'
-      window.postMessage('bothub-discount-coupon-copied', '*');
+      window.postMessage('bothub_discount_coupon_copied', '*')
     },
     loadBothubSdk() {
       const _this = this
