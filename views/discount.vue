@@ -18,7 +18,7 @@
           <div class="bothub-discount-box__content-text">{{ this.widget.discount_text }}</div>
           <div class="bothub-discount-box__content-code">{{ this.widget.discount_code }}</div>
         </div>
-        <div v-show="!showCoupon" id="bothub-messenger-checkbox" prechecked="true" size="small"></div>
+        <div v-show="!showCoupon" id="bothub-messenger-checkbox" :auto_hide_days="autoHideDays" prechecked="true" size="small"></div>
       </div>
     </div>
     <button v-if="!showCoupon" class="button" @click.prevent="getCoupon">{{ this.widget.coupon_button_text }}</button>
@@ -28,6 +28,7 @@
 
 <script>
 import Loading from './loading.vue'
+import { getCookie } from '../src/utils'
 
 export default {
   name: 'DiscountWidget',
@@ -42,6 +43,18 @@ export default {
   },
   components: {
     Loading
+  },
+  computed: {
+    autoHideDays() {
+      const discountDiv = window['bothub-discount']
+      if (discountDiv) {
+        const days = +discountDiv.getAttribute('auto_hide_days')
+        if (days > 0 && days <= 15) {
+          return days
+        }
+      }
+      return false
+    }
   },
   methods: {
     getCoupon() {
@@ -76,7 +89,7 @@ export default {
         })
       };
       (function(s,id,l){s.id=id;s.src=l;window[id]||document.body.appendChild(s)})
-      (document.createElement('script'),'bothub-sdk','https://sdk.bothub.ai/bothub.js');
+      (document.createElement('script'),'bothub-sdk','https://sdk.bothub.ai/bothub.js?t=discount-plugin');
     }
   },
   mounted() {
