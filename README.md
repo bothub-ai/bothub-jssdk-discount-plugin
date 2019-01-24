@@ -10,6 +10,14 @@
 
 ## 配置方式
 
+在网站指定位置加入插件 html 代码已显示插件
+
+```html
+<div id="bothub-discount"></div>
+```
+
+在 `</body>` 结束标签的上面加入 SDK 初始化代码：
+
 ```js
 window.BOTHUB = {
   facebook_page_id: "",
@@ -45,6 +53,28 @@ window.addEventListener('message', function(event) {
   }
 })
 ```
+
+## 插件隐藏
+
+通过添加 auto_hide_days 属性，可实现插件勾选后自动隐藏。  
+这样的好处是：插件隐藏后用户勾选的状态可以保持，依然可以通过 Bothub SDK 接口默默的给用户发送消息。
+
+```html
+<div id="bothub-discount" auto_hide_days="7"></div>
+```
+
+## 插件样式修改
+
+可直接通过覆盖 CSS 样式的方式对插件外观进行修改。  
+例如，如果我们要修改折扣码字体样式可以通过如下方式实现：
+
+```css
+.bothub-discount-box__header-percent {
+  color: slateblue;
+}
+```
+
+<img src="https://ws2.sinaimg.cn/large/006tNc79gy1fziys2p4f6j30lk0dmwfq.jpg" style="width: 400px">
 
 ## 构建方式
 
