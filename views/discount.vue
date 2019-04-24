@@ -28,7 +28,7 @@
 
 <script>
 import Loading from './loading.vue'
-import { getCookie } from '../src/utils'
+import { getCookie, copy } from '../src/utils'
 
 export default {
   name: 'DiscountWidget',
@@ -67,11 +67,7 @@ export default {
       }
     },
     copy() {
-      const input = document.body.appendChild(document.createElement('input'))
-      input.value = this.widget.discount_code
-      input.select()
-      document.execCommand('copy')
-      document.body.removeChild(input)
+      copy(this.widget.discount_code);
       this.widget.copy_button_text = 'Copied!'
       window.postMessage('bothub_discount_coupon_copied', '*')
     },
